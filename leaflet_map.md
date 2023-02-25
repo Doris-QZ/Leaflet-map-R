@@ -1,0 +1,49 @@
+# Top 10 Best colleges for Data Science in California, US  
+Developing Data Products Week2 Assignment  
+
+Doris Chen  
+2023-02-23  
+  
+  
+**Data Source: [EduRank](https://edurank.org/cs/data-science/california/)**  
+  
+
+### Load packages and data
+
+
+```r
+library(dplyr)
+library(leaflet)
+library(webshot)
+edu <- read.csv("eduRank.csv")
+```
+  
+### Edit icon color  
+  
+
+```r
+Icons <- makeAwesomeIcon(iconColor = 'transparent')
+```
+  
+### Create the map  
+  
+
+```r
+edu %>% 
+        leaflet() %>% 
+        addTiles() %>% 
+        addAwesomeMarkers(lat=edu$lat, lng=edu$lng, label=edu$num, 
+                         labelOptions = labelOptions(permanent=TRUE, textOnly=TRUE, textsize = "15px", style=list(color="white"), direction="top"), 
+                         icon=Icons,
+                         popup=paste('<strong>', edu[,1],  '</strong>', edu[,2], edu[,3], edu[,4], sep = "<br/>"))
+```
+
+```
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
+```
+
+```
+## Error in path.expand(path): invalid 'path' argument
+```
+ 

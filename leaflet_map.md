@@ -1,34 +1,34 @@
-# Top 10 Best colleges for Data Science in California, US  
-Developing Data Products Week2 Assignment  
+
+# Top 10 Best colleges for Data Science in California, US
+
+Developing Data Products Week2 Assignment
 
 Doris Chen  
-2023-02-23  
-  
-  
-**Data Source: [EduRank](https://edurank.org/cs/data-science/california/)**  
-  
+2023-02-23
+
+**Data Source:
+[EduRank](https://edurank.org/cs/data-science/california/)**
 
 ### Load packages and data
 
-
-```r
+``` r
 library(dplyr)
 library(leaflet)
-library(webshot)
 edu <- read.csv("eduRank.csv")
 ```
-  
-### Edit icon color  
-  
 
-```r
+### Edit icon color
+
+``` r
 Icons <- makeAwesomeIcon(iconColor = 'transparent')
+webshot::install_phantomjs()
 ```
-  
-### Create the map  
-  
 
-```r
+    ## It seems that the version of `phantomjs` installed is greater than or equal to the requested version.To install the requested version or downgrade to another version, use `force = TRUE`.
+
+### Create the map
+
+``` r
 edu %>% 
         leaflet() %>% 
         addTiles() %>% 
@@ -38,12 +38,4 @@ edu %>%
                          popup=paste('<strong>', edu[,1],  '</strong>', edu[,2], edu[,3], edu[,4], sep = "<br/>"))
 ```
 
-```
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-## PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
-```
-
-```
-## Error in path.expand(path): invalid 'path' argument
-```
- 
+![](leaflet_map_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

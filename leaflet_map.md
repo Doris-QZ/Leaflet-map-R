@@ -1,34 +1,43 @@
+---
+always_allow_html: yes
+output: github_document
+---
 
-# Top 10 Best colleges for Data Science in California, US
-
-Developing Data Products Week2 Assignment
+# Top 10 Best colleges for Data Science in California, US  
+Developing Data Products Week2 Assignment  
 
 Doris Chen  
-2023-02-23
-
-**Data Source:
-[EduRank](https://edurank.org/cs/data-science/california/)**
+2023-02-23  
+  
+  
+**Data Source: [EduRank](https://edurank.org/cs/data-science/california/)**  
+  
 
 ### Load packages and data
 
-``` r
+
+```r
 library(dplyr)
 library(leaflet)
 edu <- read.csv("eduRank.csv")
 ```
+  
+### Edit icon color  
+  
 
-### Edit icon color
-
-``` r
+```r
 Icons <- makeAwesomeIcon(iconColor = 'transparent')
-webshot::install_phantomjs()
+webshot::install_phantomjs(force=TRUE)
 ```
 
-    ## It seems that the version of `phantomjs` installed is greater than or equal to the requested version.To install the requested version or downgrade to another version, use `force = TRUE`.
+```
+## phantomjs has been installed to /Users/Doris/Library/Application Support/PhantomJS
+```
+  
+### Create the map  
+  
 
-### Create the map
-
-``` r
+```r
 edu %>% 
         leaflet() %>% 
         addTiles() %>% 
@@ -38,4 +47,5 @@ edu %>%
                          popup=paste('<strong>', edu[,1],  '</strong>', edu[,2], edu[,3], edu[,4], sep = "<br/>"))
 ```
 
-![](leaflet_map_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+ 

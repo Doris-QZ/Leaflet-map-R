@@ -1,3 +1,8 @@
+---
+always_allow_html: yes
+output: github_document
+---
+
 # Top 10 Best colleges for Data Science in California, US  
 Developing Data Products Week2 Assignment  
 
@@ -13,7 +18,6 @@ Doris Chen
 ```{r, message=FALSE}
 library(dplyr)
 library(leaflet)
-library(webshot)
 edu <- read.csv("eduRank.csv")
 ```
   
@@ -21,6 +25,7 @@ edu <- read.csv("eduRank.csv")
   
 ```{r}
 Icons <- makeAwesomeIcon(iconColor = 'transparent')
+webshot::install_phantomjs()
 ```
   
 ### Create the map  
